@@ -4,8 +4,17 @@
 
 <h3>Guests</h3>
 
+
+
 <ul>
-  <% @episode.guests.each do |guest| %>
+  <%if @episode.guests.empty?%>
+  <li><%= "No guests so far.."%></li>
+  <% else %>
+
+    <% @episode.guests.each do |guest| %>
     <li><%= link_to guest.name, guest %></li>
+    <% end %>
   <% end %>
 </ul>
+
+<%= link_to 'Back to all', episodes_path %></li>

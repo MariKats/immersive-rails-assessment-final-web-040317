@@ -19,17 +19,14 @@ class AppearancesController < ApplicationController
 
   def update
     @appearance = Appearance.find(params[:id])
-    if @appearance.update(appearance_params)
-      redirect_to @appearance.guest
-    else
-      redirect_to new_appearance_path
-    end
+    @appearance.update(appearance_params)
+    redirect_to @appearance.episode
   end
 
   private
 
   def appearance_params
-    params.require(:appearance).permit(:guest_id, :episode_id, :rating)
+    params.require(:appearance).permit(:guest_id, :episode_id, :rating, :user_id)
   end
 
 end
